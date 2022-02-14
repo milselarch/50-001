@@ -13,6 +13,7 @@ public class Main {
         TestRobot.test();
         TestException.test();
         */
-        TestRobot.test();
+        // TestRobot.test();
+        Permutation.test();
     }
 }

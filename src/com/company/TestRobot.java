@@ -43,10 +43,15 @@ public class TestRobot {
         System.out.println("\nSTART GRID3\n");
 
         final int[][] grid2 = {
-                {1}
+                {0,0,0,1},
+                {0,1,0,0},
+                {0,1,1,1},
+                {0,0,0,1},
+                {1,1,0,0},
+                {1,1,1,0}
         };
 
-        success = GetPath.getPath(0, 0, path, grid2);
+        success = GetPath.getPath(2, 3, path, grid2);
         System.out.println(success);
 
         if (success) {

@@ -20,7 +20,7 @@ public class Permutation {
         v = p.getA();
         System.out.println(v);
 
-        Permutation p1 = new Permutation("hat");
+        Permutation p1 = new Permutation("ad");
         p1.permute();
         v = p1.getA();
         System.out.println(v);
@@ -28,8 +28,6 @@ public class Permutation {
 
     public void permute () {
         // produce the permuted sequences of 'in' and store in 'a', recursively
-        this.a = new ArrayList<String>();
-
         if (this.in.length() <= 1) {
             this.a.add(this.in);
             return;
@@ -45,8 +43,8 @@ public class Permutation {
             Permutation p = new Permutation(sub_string);
             p.permute();
 
-            for (int i=0; i<p.in.length(); i++) {
-                String subp = current_char + p.getA().get(i);
+            for (int i=0; i<p.a.size(); i++) {
+                String subp = current_char + p.a.get(i);
                 this.a.add(subp);
             }
         }
@@ -56,4 +54,3 @@ public class Permutation {
         return a;
     }
 }
-
