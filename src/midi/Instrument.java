@@ -14,7 +14,7 @@ package midi;
 public enum Instrument {
     // Order is important in this enumeration,
     // because an instrument's position must 
-    // corresponds to its MIDI program number.
+    // correspond to its MIDI program number.
     PIANO,
     BRIGHT_PIANO,
     ELECTRIC_GRAND,

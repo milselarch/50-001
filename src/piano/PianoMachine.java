@@ -2,6 +2,7 @@ package piano;
 
 import javax.sound.midi.MidiUnavailableException;
 
+import midi.Instrument;
 import midi.Midi;
 import music.Pitch;
 
@@ -10,6 +11,7 @@ import java.util.ArrayList;
 public class PianoMachine {
     private Midi midi;
     private final ArrayList<String> playingPitches;
+    public Instrument instrument;
 
     /**
      * constructor for PianoMachine.
@@ -18,6 +20,7 @@ public class PianoMachine {
      */
     public PianoMachine() {
         this.playingPitches = new ArrayList<>();
+        this.instrument = Instrument.PIANO;
 
         try {
             midi = Midi.getInstance();
@@ -40,7 +43,7 @@ public class PianoMachine {
 
         // System.out.format("ADDING %d\n", frequency);
         this.playingPitches.add(strPitch);
-        midi.beginNote(frequency);
+        midi.beginNote(frequency, this.instrument);
         //TODO implement for question 1
     }
 
@@ -55,12 +58,27 @@ public class PianoMachine {
         }
         // System.out.format("REMOVING %d\n", frequency);
         this.playingPitches.remove(strPitch);
-        midi.endNote(frequency);
+        midi.endNote(frequency, this.instrument);
         //TODO implement for question 1
     }
 
     //TODO write method spec
     public void changeInstrument() {
+        Instrument[] instruments = Instrument.values();
+        int index = 0;
+
+        for (int k=0; k<instruments.length; k++) {
+            if (instruments[k] == this.instrument) {
+                index = k;
+                break;
+            }
+        }
+
+        final int new_index;
+        if (index == instruments.length - 1) { new_index = 0; }
+        else { new_index = index + 1; }
+
+        this.instrument = instruments[new_index];
         //TODO: implement for question 2
     }
 
