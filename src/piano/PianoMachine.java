@@ -10,7 +10,8 @@ import java.util.ArrayList;
 
 public class PianoMachine {
     private Midi midi;
-    private final ArrayList<String> playingPitches;
+    private ArrayList<String> playingPitches = new ArrayList<>();
+    private int pitchShift = 0;
     public Instrument instrument;
 
     /**
@@ -32,8 +33,10 @@ public class PianoMachine {
 
     //TODO write method spec
     public void beginNote(Pitch rawPitch) {
-        int frequency = rawPitch.toMidiFrequency();
         String strPitch = rawPitch.toString();
+        int frequency = rawPitch.transpose(
+            this.pitchShift * 12
+        ).toMidiFrequency();
         // System.out.format("START_NOTE %s\n", strPitch);
 
         if (this.playingPitches.contains(strPitch)) {
@@ -49,8 +52,10 @@ public class PianoMachine {
 
     //TODO write method spec
     public void endNote(Pitch rawPitch) {
-        int frequency = rawPitch.toMidiFrequency();
         String strPitch = rawPitch.toString();
+        int frequency = rawPitch.transpose(
+            this.pitchShift * 12
+        ).toMidiFrequency();
 
         if (!this.playingPitches.contains(strPitch)) {
             // System.out.format("NOT IN %d\n", frequency);
@@ -85,11 +90,17 @@ public class PianoMachine {
     //TODO write method spec
     public void shiftUp() {
         //TODO: implement for question 3
+        if (this.pitchShift < 2) {
+            this.pitchShift += 1;
+        }
     }
 
     //TODO write method spec
     public void shiftDown() {
         //TODO: implement for question 3
+        if (this.pitchShift > -2) {
+            this.pitchShift -= 1;
+        }
     }
 
     //TODO write method spec
