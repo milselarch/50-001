@@ -4,7 +4,7 @@ import java.util.ArrayList;
 
 public class Permutation {
     private final String in;
-    private ArrayList<String> a;
+    private final ArrayList<String> a;
     // additional attribute if needed
 
     Permutation(final String str){
