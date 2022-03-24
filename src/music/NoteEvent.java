@@ -3,7 +3,6 @@ package music;
 import midi.Instrument;
 
 public class NoteEvent {
-	
     public enum Kind { 
         start, stop
     }

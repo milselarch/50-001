@@ -7,6 +7,7 @@ public class Fib {
         System.out.println(recurFib(10));
     }
     public static int recurFib(int idx) {
-        //TODO: implement recursive method
+        if (idx < 3) { return 1; }
+        return recurFib(idx - 1) + recurFib(idx - 2);
     }
 }

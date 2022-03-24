@@ -1,2 +1,8 @@
-package exam2019;public class TemperatureAlert {
+package exam2019;
+
+interface Subject {
+
+}
+
+public class TemperatureAlert {
 }
